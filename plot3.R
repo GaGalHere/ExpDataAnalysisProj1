@@ -32,6 +32,9 @@ subdata1 <- subset(all_data, year == 2007 & month == 2)
 subdata2 <- subset(subdata1, day == 1 | day == 2)
 #  plot 3
 par(mar=c(4,4,2,1))
+# Blank PNG file for writing 
+png(file = "plot3.png", width = 480, height = 480)
+# Write plot to PNG file
 plot3<-plot(subdata2$datetime,subdata2$Sub_metering_1,
       type="l",col="black",
       ylab="Energy sub metering",
@@ -44,6 +47,5 @@ legend("topright", lty="solid", col=c("black", "red","blue"),
        legend=c("Sub_metering_1",
                 "Sub_metering_2",
                 "Sub_metering_3"))
-#Copy plot to PNG file
-dev.copy(png, file="plot3.png")
+# Close PNG device 
 dev.off()
